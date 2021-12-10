@@ -1,0 +1,26 @@
+def counting_sort(item):
+    min = min(item)
+    max = max(item)
+    support = [0 for i in range(max-min+1)]
+    for element in item:
+        support[element-min] += 1
+    index = 0
+    for i in range(len(support)):
+        for element in range(support[i]):
+            item[index] = i+min
+            index += 1
+    return None
+
+
+a=[]
+n=int(input('Введите количество элементов: '))
+for i in range(n):
+    print('Введите',i+1,'элемент через клавишу enter: ', end='')
+    a.append(int(input()))
+print('Исходный массив:',a)
+
+print(counting_sort(a))
+
+# сложность сортировки - (n+k), где n - количество элементов в массиве, k - разница между максимальным и минимальным в массиве.
+# мы находим max и создаем вспомогательный массив с max-min+1 элементами. 
+
